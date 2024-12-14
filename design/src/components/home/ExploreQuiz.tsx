@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
-import React from 'react'
 import { colors } from '../../theme/colors';
 import DNA from '../../assets/Thumbnail/bacteria.png'
 import Math from '../../assets/Thumbnail/abacus.png'
