@@ -75,7 +75,7 @@ const services = [
 
 const PopularCategory = () => {
     return (
-        <Box>
+        <Box mt={5}>
             <Container maxWidth={'xl'}>
                 <Box>
                     <Box textAlign={'center'}>

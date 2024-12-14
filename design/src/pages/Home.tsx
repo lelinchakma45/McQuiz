@@ -4,6 +4,8 @@ import HomeMain from '../components/home/Main'
 import TextSlider from '../components/home/TextSlider'
 import ExploreQuiz from '../components/home/ExploreQuiz'
 import PopularCategory from '../components/home/PopularCategory'
+import BestTeacher from '../components/home/BestTeacher'
+import WhymcQuiz from '../components/home/WhymcQuiz'
 
 const Home = () => {
     return (
@@ -12,6 +14,8 @@ const Home = () => {
             <TextSlider />
             <ExploreQuiz />
             <PopularCategory />
+            <BestTeacher />
+            <WhymcQuiz />
         </Box>
     )
 }
