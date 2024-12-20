@@ -1,12 +1,10 @@
 import { Box, Container } from '@mui/material'
-import Breadcrumbs from '../components/common/Breadcrumbs';
+import React from 'react'
 import Image from '../assets/Background/Bredicombs.png'
-import Main from '../components/about/Main';
-import Rules from '../components/about/Rules';
-import Count from '../components/about/Count';
-import Testimonial from '../components/about/Testimonial';
+import Breadcrumbs from '../components/common/Breadcrumbs';
+import Collapse from '../components/contact/Collapse';
 
-const About = () => {
+const Contact = () => {
     return (
         <Box>
             <Box
@@ -19,15 +17,12 @@ const About = () => {
                 }}
             >
                 <Container maxWidth={'xl'}>
-                    <Breadcrumbs page={'About'} />
+                    <Breadcrumbs page={'Contact'} />
                 </Container>
             </Box>
-            <Main />
-            <Rules />
-            <Count />
-            <Testimonial />
+            <Collapse />
         </Box>
     )
 }
 
-export default About
+export default Contact;
