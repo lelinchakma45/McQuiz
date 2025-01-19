@@ -5,7 +5,13 @@ import { lightcolors } from '../../theme/lightcolors'
 
 const WhymcQuiz = () => {
     return (
-        <Box>
+        <Box
+        mt={5}
+        sx={{
+            // background: lightcolors.primary,
+            pb: 10
+        }}
+        >
             <Container maxWidth={'xl'}>
                 <Box>
                     <Box textAlign={'center'} mb={5}>
