@@ -1,249 +1,171 @@
-import { Box, Button, Card, Grid, IconButton, List, ListItem, ListItemText, Paper, Tooltip, Typography } from '@mui/material'
-import React from 'react'
-import { Cell, Line, LineChart, Pie, PieChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const StudentDashboard = () => {
-    const weeklyData = [
-        { week: 'Week 1', value: 15 },
-        { week: 'Week 2', value: 20 },
-        { week: 'Week 3', value: 8 },
-        { week: 'Week 4', value: 15 }
-    ];
-    const data = [
-        { name: "Programming", value: 35, color: '#FFD700' },  // Yellow
-        { name: "Web Design", value: 25, color: '#9370DB' },   // Purple
-        { name: "Algorithms", value: 20, color: '#0000FF' },   // Blue
-        { name: "Networks", value: 15, color: '#FF0000' },     // Red
-        { name: "Physics", value: 5, color: '#008000' }        // Green
-    ];
+  const weeklyData = [
+    { week: 'Week 1', value: 15 },
+    { week: 'Week 2', value: 20 },
+    { week: 'Week 3', value: 8 },
+    { week: 'Week 4', value: 15 }
+  ];
 
-    const totalQuizzes = 1381;
-    const failedQuizzes = 92;
-    return (
-        <Box sx={{ flex: 1, p: 3 }}>
-            <Typography variant="h4" sx={{ mb: 3 }}>
-                Good morning, <Typography component="span" color="primary" variant="h4">Ezzat</Typography>
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 4 }}>
-                Let's get started on engaging with interactive and informative quizzes!
-            </Typography>
+  const data = [
+    { name: "Programming", value: 35, color: '#FFD700' },
+    { name: "Web Design", value: 25, color: '#9370DB' },
+    { name: "Algorithms", value: 20, color: '#0000FF' },
+    { name: "Networks", value: 15, color: '#FF0000' },
+    { name: "Physics", value: 5, color: '#008000' }
+  ];
 
-            <Grid container spacing={3}>
-                {/* Recent Quiz Results */}
-                <Grid item xs={12} md={8}>
-                    <Box border={'1px solid'} p={2} borderRadius={3}>
-                        <Grid container spacing={1}>
-                            <Grid item xs={12} md={7}>
-                                <Box sx={{ width: '100%', height: 300, position: 'relative' }}>
-                                    <ResponsiveContainer>
-                                        <PieChart>
-                                            <Pie
-                                                data={data}
-                                                cx="50%"
-                                                cy="50%"
-                                                innerRadius={60}
-                                                outerRadius={100}
-                                                paddingAngle={0}
-                                                dataKey="value"
-                                                nameKey="name"
-                                            >
-                                                {data.map((entry, index) => (
-                                                    <Cell
-                                                        key={`cell-${index}`}
-                                                        fill={entry.color}
-                                                        style={{ cursor: 'pointer' }}
-                                                    />
-                                                ))}
-                                            </Pie>
-                                        </PieChart>
-                                    </ResponsiveContainer>
+  const totalQuizzes = 1381;
+  const failedQuizzes = 92;
 
-                                    {/* Center Statistics */}
-                                    <Box
-                                        sx={{
-                                            position: 'absolute',
-                                            top: '50%',
-                                            left: '50%',
-                                            transform: 'translate(-50%, -50%)',
-                                            textAlign: 'center'
-                                        }}
-                                    >
-                                        <Typography variant="h4" color="primary" fontWeight="bold">
-                                            {totalQuizzes}
-                                        </Typography>
-                                        <Typography variant="body2" color="text.secondary">
-                                            Quizzes taken
-                                        </Typography>
-                                    </Box>
+  return (
+    <div className="flex-1 p-8">
+      <h1 className="mb-3 text-2xl font-semibold">
+        Good morning, <span className="text-blue-600">Ezzat</span>
+      </h1>
+      <p className="mb-8 text-gray-600">
+        Let's get started on engaging with interactive and informative quizzes!
+      </p>
 
-                                    {/* Failed Quizzes Count */}
-                                    <Box
-                                        sx={{
-                                            position: 'absolute',
-                                            bottom: 0,
-                                            left: '50%',
-                                            transform: 'translateX(-50%)',
-                                            textAlign: 'center',
-                                            width: '100%',
-                                            display: 'flex',
-                                            justifyContent: 'center',
-                                            gap: 4
-                                        }}
-                                    >
-                                        <Box sx={{ textAlign: 'center' }}>
-                                            <Typography variant="h5" color="primary">
-                                                {totalQuizzes}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                Quizzes taken
-                                            </Typography>
-                                        </Box>
-                                        <Box sx={{ textAlign: 'center' }}>
-                                            <Typography variant="h5" color="error">
-                                                {failedQuizzes}
-                                            </Typography>
-                                            <Typography variant="body2" color="text.secondary">
-                                                Failed quizzes
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                </Box>
-                            </Grid>
-                            <Grid item xs={12} md={5}>
-                                <List>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Web design 220 quizzes"
-                                            secondary="40% of them passed with B grade"
-                                            primaryTypographyProps={{ color: 'secondary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Web design 220 quizzes"
-                                            secondary="40% of them passed with B grade"
-                                            primaryTypographyProps={{ color: 'secondary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    <ListItem>
-                                        <ListItemText
-                                            primary="Programming 220 quizzes"
-                                            secondary="60% of them passed with A grade"
-                                            primaryTypographyProps={{ color: 'primary' }}
-                                        />
-                                    </ListItem>
-                                    {/* Add other quiz categories similarly */}
-                                </List>
-                            </Grid>
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Recent Quiz Results */}
+        <div className="md:col-span-8">
+          <div className="border border-gray-200 p-4 rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              <div className="md:col-span-7 relative h-72">
+                <ResponsiveContainer>
+                  <PieChart>
+                    <Pie
+                      data={data}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={100}
+                      paddingAngle={0}
+                      dataKey="value"
+                    >
+                      {data.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.color}
+                          className="cursor-pointer"
+                        />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
 
-                        </Grid>
-                    </Box>
-                </Grid>
+                {/* Center Statistics */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                  <p className="text-2xl font-bold text-blue-600">{totalQuizzes}</p>
+                  <p className="text-sm text-gray-600">Quizzes taken</p>
+                </div>
 
-                {/* Weekly Performance */}
-                <Grid item xs={12} md={4}>
-                    <Card sx={{ p: 3, height: '100%' }}>
-                        <Typography variant="h6" sx={{ mb: 2 }}>Weekly performance</Typography>
-                        <ResponsiveContainer width="100%" height={200}>
-                            <LineChart data={weeklyData}>
-                                <XAxis dataKey="week" />
-                                <YAxis />
-                                <Line type="monotone" dataKey="value" stroke="#1976d2" />
-                            </LineChart>
-                        </ResponsiveContainer>
-                    </Card>
-                </Grid>
+                {/* Failed Quizzes Count */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex justify-center gap-8 w-full">
+                  <div className="text-center">
+                    <p className="text-xl text-blue-600">{totalQuizzes}</p>
+                    <p className="text-sm text-gray-600">Quizzes taken</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xl text-red-600">{failedQuizzes}</p>
+                    <p className="text-sm text-gray-600">Failed quizzes</p>
+                  </div>
+                </div>
+              </div>
 
-                {/* Scheduled Test */}
-                <Grid item xs={12} md={6}>
-                    <Card sx={{ p: 3 }}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                            <Typography variant="h6">Scheduled test</Typography>
-                            <IconButton size="small"><i className='bi bi-facebook' /></IconButton>
-                        </Box>
+              <div className="md:col-span-5">
+                <ul className="space-y-4">
+                  {[
+                    { title: "Programming 220 quizzes", desc: "60% of them passed with A grade", color: "text-blue-600" },
+                    { title: "Web design 220 quizzes", desc: "40% of them passed with B grade", color: "text-purple-600" },
+                    { title: "Algorithms 220 quizzes", desc: "60% of them passed with A grade", color: "text-blue-600" },
+                    { title: "Networking 220 quizzes", desc: "40% of them passed with B grade", color: "text-purple-600" },
+                    { title: "Physics 220 quizzes", desc: "60% of them passed with A grade", color: "text-green-600" }
+                  ].map((item, index) => (
+                    <li key={index} className="py-2">
+                      <p className={`font-medium ${item.color}`}>{item.title}</p>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                        <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-                            <Typography variant="h4">00</Typography>
-                            <Typography variant="h4">:</Typography>
-                            <Typography variant="h4">42</Typography>
-                            <Typography variant="h4">:</Typography>
-                            <Typography variant="h4">10</Typography>
-                        </Box>
+        {/* Weekly Performance */}
+        <div className="md:col-span-4">
+          <div className="bg-white rounded-lg shadow p-6 h-full">
+            <h2 className="text-lg font-semibold mb-4">Weekly performance</h2>
+            <div className="h-48">
+              <ResponsiveContainer>
+                <LineChart data={weeklyData}>
+                  <XAxis dataKey="week" />
+                  <YAxis />
+                  <Line type="monotone" dataKey="value" stroke="#1976d2" />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
 
-                        <Typography variant="subtitle1" sx={{ mb: 2 }}>Programming quiz</Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                            Created on: 12 May 2023
-                        </Typography>
+        {/* Scheduled Test */}
+        <div className="md:col-span-6">
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-semibold">Scheduled test</h2>
+              <button className="p-1 rounded-full hover:bg-gray-100">
+                <i className="bi bi-facebook" />
+              </button>
+            </div>
 
-                        <Button variant="contained" fullWidth>Set another</Button>
-                    </Card>
-                </Grid>
+            <div className="flex gap-4 mb-6">
+              <span className="text-2xl font-bold">00</span>
+              <span className="text-2xl font-bold">:</span>
+              <span className="text-2xl font-bold">42</span>
+              <span className="text-2xl font-bold">:</span>
+              <span className="text-2xl font-bold">10</span>
+            </div>
 
-                {/* Overall Performance */}
-                <Grid item xs={12} md={6}>
-                    <Card sx={{ p: 3 }}>
-                        <Typography variant="h6" sx={{ mb: 3 }}>Overall performance</Typography>
+            <h3 className="text-lg mb-2">Programming quiz</h3>
+            <p className="text-gray-600 mb-4">Created on: 12 May 2023</p>
 
-                        <List>
-                            <ListItem sx={{ justifyContent: 'space-between' }}>
-                                <Typography>Weekly tests</Typography>
-                                <Typography color="primary">80%</Typography>
-                            </ListItem>
-                            <ListItem sx={{ justifyContent: 'space-between' }}>
-                                <Typography>Practice tests</Typography>
-                                <Typography color="primary">40%</Typography>
-                            </ListItem>
-                            <ListItem sx={{ justifyContent: 'space-between' }}>
-                                <Typography>Questionnairs</Typography>
-                                <Typography color="primary">64%</Typography>
-                            </ListItem>
-                            <ListItem sx={{ justifyContent: 'space-between' }}>
-                                <Typography>Monthly tests</Typography>
-                                <Typography color="primary">29%</Typography>
-                            </ListItem>
-                        </List>
+            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+              Set another
+            </button>
+          </div>
+        </div>
 
-                        <Button variant="contained" fullWidth>See overall results</Button>
-                    </Card>
-                </Grid>
-            </Grid>
-        </Box>
-    )
-}
+        {/* Overall Performance */}
+        <div className="md:col-span-6">
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-lg font-semibold mb-6">Overall performance</h2>
 
-export default StudentDashboard
+            <ul className="space-y-4 mb-6">
+              {[
+                { label: "Weekly tests", value: "80%" },
+                { label: "Practice tests", value: "40%" },
+                { label: "Questionnairs", value: "64%" },
+                { label: "Monthly tests", value: "29%" }
+              ].map((item, index) => (
+                <li key={index} className="flex justify-between items-center">
+                  <span>{item.label}</span>
+                  <span className="text-blue-600">{item.value}</span>
+                </li>
+              ))}
+            </ul>
+
+            <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+              See overall results
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default StudentDashboard;
